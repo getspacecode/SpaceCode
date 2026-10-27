@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   SpaceCode design tokens
+   Colours come straight from the logo: near-black #0a0a0f, off-white
+   #f5f5f6 and the single blue #3b82f6. Light theme uses the black logo.
+   ------------------------------------------------------------------ */
+:root,
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0a0a0f;
+  --surface: #13131a;
+  --surface-2: #1c1c26;
+  --fg: #f5f5f6;
+  --muted: #9b9bab;
+  --line: #2a2a36;
+  --accent: #3b82f6;
+  --accent-ink: #0a0a0f;
+  --accent-text: #6ea2fa;
+  --logo-a: #f5f5f6;
+  --logo-b: #3b82f6;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f6f4;
+  --surface: #ecece8;
+  --surface-2: #e0e0da;
+  --fg: #0a0a0f;
+  --muted: #5d5d69;
+  --line: #d2d2cb;
+  --accent: #3b82f6;
+  --accent-ink: #0a0a0f;
+  --accent-text: #1f5fd8;
+  --logo-a: #0a0a0f;
+  --logo-b: #0a0a0f;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-foreground: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-text: var(--accent-text);
+
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+
+  --radius-field: 18px;
+  --radius-card: 28px;
+  --radius-panel: 44px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* form controls show focus through their own blue border */
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+
+/* small mono label used above headings */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* theme switch: the new theme is revealed by a growing circle (see ThemeToggle) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
