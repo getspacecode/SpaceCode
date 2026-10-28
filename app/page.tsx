@@ -132,9 +132,9 @@ export default function HomePage() {
       <Section>
         <div className="flex flex-wrap items-end justify-between gap-6">
           <SectionHeading
-            eyebrow="Services & pricing"
-            title="What we do"
-            description="Simple, fixed starting prices. Every site comes responsive, with basic security, built around your wishes."
+            eyebrow="Servisi i cene"
+            title="Šta mi radimo?"
+            description="Sve što zamislite, ostvarujemo želje u digitalnom svetu"
           />
           <Reveal>
             <Link
